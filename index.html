@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+
+
+    <title>Tanvi - A Creative Designer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A Creative Designer" />
+    <meta name="author" content="Tanvi">
+    <!-- <meta property="og:image" content="http://bennet.clapat.com/prez/01_preview.png" /> -->
+    <meta charset="UTF-8" />
+    <!-- <link rel="icon" type="image/ico" href="favicon.ico" /> -->
+    <link href="assets/style.css" rel="stylesheet" />
+    <link href="assets/css/all.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400..900&amp;family=Poppins:wght@400;500;600&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Pacifico&family=Playfair+Display&family=Poppins&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/impact" rel="stylesheet">
+
+
+</head>
+
+<style>
+    .hero-title-placeholder span {
+        -webkit-transform: scale(2);
+        transform: scale(2);
+        position: relative;
+        display: table;
+        pointer-events: none;
+        width: auto;
+        text-align: center;
+        font-size: 50px;
+        line-height: calc((1rem + 14vw) / 2);
+        letter-spacing: -0.2vw;
+    }
+
+    #hero {
+        width: 100%;
+        height: auto;
+        position: relative;
+        z-index: 0;
+        /* background-image: url('img/bg/bg3.png'); */
+        background-color: black;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+
+    @media only screen and (max-width: 768px) {
+        .azmi-title {
+            font-size: 12px;
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+        .caption-animated .hero-title::before {
+            opacity: 0.6;
+            left: 0;
+            top: -53px;
+            width: 100%;
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+        .caption-animated .hero-title::after {
+            opacity: 0.6;
+            right: -33px;
+            bottom: -129px;
+            /* width: 100%; */
+            top: auto;
+            justify-items: center;
+            width: 100px;
+        }
+    }
+    .slider-fixed-img-container {
+        width: 420px;
+        height: 600px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #eaeaea;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    .slider-fixed-img-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 0px !important;
+        margin: 0;
+        padding: 0;
+        display: block;
+        background: #eaeaea;
+        transition: transform 0.2s;
+    }
+
+    .slider-fixed-img-container:hover img {
+        transform: scale(1.03);
+    }
+
+    .clapat-slider-viewport {
+        gap: 0 !important;
+        display: flex;
+    }
+
+    .clapat-slide {
+        margin: 1px !important;
+        padding: 1px !important;
+    }
+
+    /* Modal styles */
+    .img-modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.85);
+        justify-content: center;
+        align-items: center;
+        transition: opacity 0.2s;
+    }
+
+    .img-modal.active {
+        display: flex;
+    }
+
+    .img-modal-content {
+        max-width: 90vw;
+        max-height: 90vh;
+        box-shadow: 0 0 20px #000;
+        border-radius: 8px;
+        background: #fff;
+        position: relative;
+        animation: modalIn 0.2s;
+    }
+
+    @keyframes modalIn {
+        from {
+            transform: scale(0.95);
+            opacity: 0;
+        }
+
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .img-modal-content img {
+        max-width: 90vw;
+        max-height: 90vh;
+        display: block;
+        border-radius: 8px;
+    }
+
+    .img-modal-close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 2.2rem;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.4);
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 2;
+        transition: background 0.2s;
+    }
+
+    .img-modal-close:hover {
+        background: rgba(0, 0, 0, 0.7);
+    }
+
+    @media (max-width: 600px) {
+        .slider-fixed-img-container {
+            width: 90vw;
+            height: 60vw;
+            max-width: 100%;
+            max-height: 70vw;
+        }
+
+        .img-modal-content img {
+            max-width: 98vw;
+            max-height: 80vh;
+        }
+        
+        /* Responsive slider title */
+        .slider-title {
+            flex-direction: column !important;
+            text-align: center !important;
+            gap: 5px !important;
+        }
+        
+        .slider-title .title-left,
+        .slider-title .title-center,
+        .slider-title .title-right {
+            font-size: 20px !important;
+            letter-spacing: -12px !important;
+            font-family: 'Moliga', sans-serif !important;
+        }
+    }
+    
+    /* Medium screen responsive */
+    @media (max-width: 768px) {
+        .slider-title {
+            gap: 8px !important;
+        }
+        
+        .slider-title .title-left,
+        .slider-title .title-center,
+        .slider-title .title-right {
+            font-size: 22px !important;
+        }
+    }
+    
+    /* Slider title styling to match the image */
+    .slider-title {
+        font-family: 'Impact', sans-serif !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        letter-spacing: -1px !important;
+        color: #000;
+    }
+    
+    .slider-title .title-left,
+    .slider-title .title-center,
+    .slider-title .title-right {
+        font-family: 'Impact', sans-serif !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        letter-spacing: -1px !important;
+        color: #000;
+    }
+</style>
+<style>
+    @media (max-width: 767px) {
+        .hero-section2 {
+            background-image: url('/assets/images/home/banner-mobile.JPG') !important;
+        }
+    }
+</style>
+<style>
+    @media (max-width: 767px) {
+        .hero-section2 {
+            background-position: 30% center !important;
+        }
+    }
+</style>
+<style>
+    @media (max-width: 991px) {
+        .landing-intro-wrapper {
+            flex-direction: column !important;
+            gap: 20px !important;
+        }
+
+        .landing-intro-wrapper h2,
+        .landing-intro-wrapper h4 {
+            min-width: 0 !important;
+            width: 100% !important;
+            text-align: left !important;
+        }
+    }
+</style>
+<style>
+    @media (max-width: 767px) {
+        .hero-section1 {
+            background-image: url('/assets/images/home/about-mobile.JPG') !important;
+            background-position: 30% center !important;
+        }
+    }
+</style>
+<style>
+    @media (max-width: 767px) {
+        .hero-section1 {
+            background-position: 30% center !important;
+        }
+    }
+</style>
+<style>
+    @media (max-width: 767px) {
+        .hero-section1 {
+            background-image: url('/assets/images/collections/celeb/banner.png') !important;
+            background-size: 100% 100% !important;
+            background-position: 30% center !important;
+        }
+    }
+</style>
+<style>
+    @media (max-width: 991px) {
+        .landing-intro-wrapper {
+            flex-direction: column !important;
+            gap: 20px !important;
+        }
+
+        .landing-intro-wrapper h2,
+        .landing-intro-wrapper h4 {
+            min-width: 0 !important;
+            width: 100% !important;
+            text-align: left !important;
+        }
+    }
+</style>
+<style>
+    @media (max-width: 767px) {
+        #copy-email .email-text {
+            font-size: 20px !important;
+        }
+    }
+</style>
+
+
+<body class="hidden hidden-ball smooth-scroll rounded-borders hero-below-caption" data-primary-color="#D6D6CE">
+
+
+    <main>
+        <!-- Preloader -->
+        <div class="preloader-wrap" data-centerLine="Loading">
+
+            <div class="percentage-wrapper">
+                <div class="percentage" id="precent">
+
+                    <span class="number number_2">
+                        <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span>
+                    </span>
+                    <span class="number number_3">
+                        <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span>
+                    </span>
+                </div>
+                <div class="percentage-first"><span>wait, wait..</span></div>
+                <div class="percentage-last"><span>100</span></div>
+            </div>
+
+        </div>
+        <!--/Preloader -->
+
+        <div class="cd-index cd-main-content">
+
+            <!-- Page Content -->
+            <div id="clapat-page-content" class="light-content" data-bgcolor="#000">
+
+                <!-- Header -->
+                <header class="clapat-header classic-menu invert-header" data-menucolor="#0c0c0c">
+
+                    <!-- Graidient -->
+                    <div class="header-gradient"></div>
+                    <!--/Graidient -->
+
+                    <div id="header-container">
+
+                        <!-- Logo -->
+                        <div id="clapat-logo" class="hide-ball">
+                            <a class="ajax-link" data-type="page-transition" href="index.html">
+                                <!-- <img class="black-logo" src="images/logo.png" alt="ClaPat Logo">
+                                <img class="white-logo" src="images/logo-white.png" alt="ClaPat Logo"> -->
+                                <h5 class="" style="margin-top: 20px;">Tanvi.in
+                                </h5>
+                            </a>
+                        </div>
+                        <!--/Logo -->
+
+
+                        <!-- Navigation -->
+                        <nav class="clapat-nav-wrapper">
+                            <div class="nav-height">
+                                <ul data-breakpoint="1025" class="flexnav">
+                                    <li class="menu-timeline link"><a class="ajax-link active"
+                                            data-type="page-transition" href="index.html">
+                                            <div class="before-span"><span data-hover="Index">Index</span></div>
+                                        </a></li>
+                                    <li class="menu-timeline link"><a class="ajax-link" data-type="page-transition"
+                                            href="/about.html">
+                                            <div class="before-span"><span data-hover="About Me">About Me</span></div>
+                                        </a>
+                                        <!-- <ul>
+                                            <li><a class="ajax-link" href="#!"
+                                                    data-type="page-transition">Highlights</a></li>
+                                            <li><a class="ajax-link" href="#!" data-type="page-transition">Portfolio</a>
+                                            </li>
+                                            <li><a class="ajax-link" href="#!"
+                                                    data-type="page-transition">Playground</a></li>
+                                        </ul> -->
+                                    </li>
+                                    <li class="menu-timeline link"><a class="ajax-link" data-type="page-transition"
+                                            href="/actor.html">
+                                            <div class="before-span"><span data-hover="Works">Works</span></div>
+                                        </a></li>
+                                    <li class="menu-timeline link"><a class="ajax-link" data-type="page-transition"
+                                            href="contact.html">
+                                            <div class="before-span"><span data-hover="Connect Me">Connect Me</span>
+                                            </div>
+                                        </a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                        <!--/Navigation -->
+
+
+                        <!-- Header Button -->
+                        <a class="header-button ajax-link" data-type="page-transition" href="#!">
+                            <div class="button-icon-link right">
+                                <div class="icon-wrap-scale">
+                                    <div class="icon-wrap parallax-wrap">
+                                        <div class="button-icon parallax-element">
+                                            <i class="fa-solid fa-arrow-right"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="button-text sticky right"><span data-hover="Let's Talk">Let's Talk</span>
+                                </div>
+                            </div>
+                        </a>
+                        <!--/Header Button -->
+
+
+                        <!-- Menu Burger -->
+                        <div class="button-wrap right menu burger-lines">
+                            <div class="icon-wrap parallax-wrap">
+                                <div class="button-icon parallax-element">
+                                    <div id="burger-wrapper">
+                                        <div id="menu-burger">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="button-text sticky right"><span data-hover="Menu">Menu</span></div>
+                        </div>
+                        <!--/Menu Burger -->
+
+                    </div>
+                </header>
+                <!--/Header -->
+
+
+
+                <!-- Content Scroll -->
+                <div id="content-scroll">
+
+                    <!-- Main -->
+                    <div id="main">
+
+                        <!-- Hero Section -->
+                        <div id="hero" class="hero-section2" style="background-image: url('/assets/images/home/banner.jpeg');">
+                           
+                            <div id="">
+                                <div id="hero-caption" class="content-full-width  text-align-center hero-full-caption">
+                                    <div class="inner">
+
+                                        <h1 class="hero-title" data-infoTextBefore="" style="width: 300px;" "
+                                            data-infoTextAfter="">
+                                            <div><span class="">
+                                                <!-- <img src=" /img/tanvi.png" width="170px"> -->
+                                            </span>
+                                    </div>
+                                    </h1>
+
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!--/Hero Section -->
+
+
+
+
+
+
+
+                    <!-- Main Content -->
+                    <div id="main-content">
+                        <!-- Main Page Content -->
+                        <div id="main-page-content">
+                            <!-- Fit Thumb Screen Effects -->
+                            <div id="itemsWrapperLinks">
+                                <div id="itemsWrapper" class="webgl-fitthumbs fx-one">
+
+                                    <div id="hero" class="hero-section1"
+                                        style="background-image: url('/assets/images/home/about.jpeg');">
+                                       
+                                        <div id="">
+                                            <div id="hero-caption"
+                                                class="content-full-width  text-align-center hero-full-caption">
+                                                <div class="inner">
+
+                                                    <h1 class="hero-title" data-infoTextBefore="" style="width: 300px;" "
+                                                            data-infoTextAfter="">
+                                                            <div><span class="">
+                                                                <!-- <img src=" /img/tanvi.png" width="170px"> -->
+                                                        </span>
+                                                </div>
+                                                </h1>
+
+
+                                                <!-- <h1 class="hero-title azmi-title caption-timeline" data-infoTextBefore="Welcome" data-infoTextAfter="Est. 2025">
+                                                            <div><span>Tanvi Azmi</span></div>
+                                                        </h1> -->
+
+                                                <!-- <div class="hero-subtitle caption-timeline onload-shuffle ">
+                                                            <div><span>Bringing brands to life through</span></div>
+                                                            <div class="text-third"><span>creative design solutions</span></div>
+                                                        </div> -->
+                                            </div>
+                                        </div>
+                                        <!-- <div id="hero-footer" class="has-border">
+                                                    <div class="hero-footer-left">
+                                                        <div class="button-wrap left scroll-down">
+                                                            <div class="icon-wrap parallax-wrap">
+                                                                <div class="button-icon parallax-element">
+                                                                    <i class="fa-solid fa-arrow-down"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div class="button-text sticky left"><span
+                                                                    data-hover="Scroll to Explore">Scroll to Explore</span></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="hero-footer-right ">
+                                                        <div id="info-text"><span>Featured Projects</span></div>
+                                                    </div>
+                                                </div> -->
+                                    </div>
+                                    <div id="hero-interaction">
+                                        <!-- <div class="hero-column col-left">
+                                                    <div class="col-img-wrapper small-img"><img src="img/6.png" alt=""></div>
+                                                    <div class="col-img-wrapper large-img"><img src="img/bg/2.jpeg" alt=""></div>
+                                                </div>
+                                                <div class="hero-column col-right">
+                                                    <div class="col-img-wrapper large-img"><img src="img/bg/1.jpeg" alt=""></div>
+                                                    <div class="col-img-wrapper small-img"><img src="img/bg/4.jpeg" alt=""></div>
+                                                </div> -->
+                                    </div>
+                                </div>
+
+                               
+                                <!--/Row -->
+
+
+
+
+
+                                <!-- Row -->
+                                <!--/Row -->
+
+                                <div id="hero" class="hero-section1"
+                                    style="background-image: url('/assets/images/collections/celeb/banner.png'); background-size: 100% 100%; background-position: center; background-repeat: no-repeat;">
+                                   
+                                    <div id="">
+                                        <div id="hero-caption"
+                                            class="content-full-width  text-align-center hero-full-caption">
+                                            <div class="inner">
+
+                                                <h1 class="hero-title" data-infoTextBefore="" style="width: 300px;"
+                                                    data-infoTextAfter="">
+                                                    <div><span class="">
+                                                        <!-- <img src=" /img/tanvi.png" width="170px"> -->
+                                                    </span>
+                                            </div>
+                                            </h1>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                           
+
+                            <!-- Row -->
+                            <div class="content-row full text-align-center dark-section disable-header-gradient"
+                                data-bgcolor="#D6D6CE">
+
+                                <div class="snap-slider-holder">
+
+                                    <div class="snap-slider-images">
+                                        <div class="snap-slider-images-wrapper">
+
+
+                                            <!----------------- PRARTHANA INDRAJITH ---------------------------->
+                                            <div>
+                                            <div class="content-row full dark-section" data-bgcolor="#D6D6CE">
+                                                <!-- Slider Title -->
+                                                <div class="slider-title" style="font-family: 'Impact', sans-serif !important; display: flex; justify-content: space-between; align-items: center; padding-left: 30px; padding-right: 30px; color: #333; font-size: 24px; font-weight: bold; letter-spacing: -12px; flex-wrap: wrap; gap: 10px;">
+                                                    <div class="title-left">PRARTHANA INDRAJITH</div>
+                                                    <div class="title-center"><span style="font-size: 14px; margin-right: 20px;">01</span> 2023</div>
+                                                    <div class="title-right">RETRO</div>
+                                                </div>
+                                                
+                                                <div
+                                                    class="clapat-slider-wrapper content-slider small-looped-carousel has-animation autocenter light-cursor">
+                                                    <div class="clapat-slider">
+                                                        <div class="clapat-slider-viewport">
+                                                            <div class="clapat-slide">
+                                                                <div class="slider-fixed-img-container">
+                                                                    <img src="/assets/images/collections/celeb/prarthana/1.jpeg"
+                                                                        alt="Slider Image 1">
+                                                                </div>
+                                                            </div>
+                                                            <div class="clapat-slide">
+                                                                <div class="slider-fixed-img-container">
+                                                                    <img src="/assets/images/collections/celeb/prarthana/2.jpeg"
+                                                                        alt="Slider Image 2">
+                                                                </div>
+                                                            </div>
+                                                            <div class="clapat-slide">
+                                                                <div class="slider-fixed-img-container">
+                                                                    <img src="/assets/images/collections/celeb/prarthana/3.jpeg"
+                                                                        alt="Slider Image 3">
+                                                                </div>
+                                                            </div>
+                                                            <div class="clapat-slide">
+                                                                <div class="slider-fixed-img-container">
+                                                                    <img src="/assets/images/collections/celeb/prarthana/4.jpeg"
+                                                                        alt="Slider Image 4">
+                                                                </div>
+                                                            </div>
+                                                            <div class="clapat-slide">
+                                                                <div class="slider-fixed-img-container">
+                                                                    <img src="/assets/images/collections/celeb/prarthana/5.jpeg"
+                                                                        alt="Slider Image 5">
+                                                                </div>
+                                                            </div>
+                                                            <div class="clapat-slide">
+                                                                <div class="slider-fixed-img-container">
+                                                                    <img src="/assets/images/collections/celeb/prarthana/6.jpeg"
+                                                                        alt="Slider Image 6">
+                                                                </div>
+                                                            </div>
+
+
+
+                                                        </div>
+                                                    </div>
+                                                    <!-- Removed slider controls and pagination -->
+                                                </div>
+                                                <hr class="destroy">
+                                                <hr class="destroy">
+                                                <hr>
+                                            </div>
+                                            <!-- Modal for image preview -->
+                                            <div class="img-modal" id="imgModal">
+                                                <div class="img-modal-content">
+                                                    <button class="img-modal-close" id="imgModalClose"
+                                                        aria-label="Close">&times;</button>
+                                                    <img src="" alt="Full Preview" id="imgModalImg">
+                                                </div>
+                                            </div>
+
+
+
+                                            <!--------------------------------------------------------------------->
+
+                                            <div class="content-row full dark-section" data-bgcolor="#D6D6CE">
+                                                <!-- Slider Title -->
+                                                <div class="slider-title" style="font-family: 'Impact', sans-serif !important; display: flex; justify-content: space-between; align-items: center; padding-left: 30px; padding-right: 30px; color: #333; font-size: 24px; font-weight: bold; letter-spacing: -12px; flex-wrap: wrap; gap: 10px;">
+                                                    <div class="title-left">PRARTHANA INDRAJITH</div>
+                                                    <div class="title-center"><span style="font-size: 14px; margin-right: 20px;">02</span> 2024</div>
+                                                    <div class="title-right">NEON NIGHT</div>
+                                                </div>
+                                                
+                                                <div
+                                                    class="clapat-slider-wrapper content-slider small-looped-carousel has-animation autocenter light-cursor">
+                                                    <div class="clapat-slider">
+                                                        <div class="clapat-slider-viewport">
+                                                            <div class="clapat-slide">
+                                                                <div class="slider-fixed-img-container">
+                                                                    <img src="/assets/images/collections/celeb/prarthana/7.jpeg"
+                                                                        alt="Slider Image 1">
+                                                                </div>
+                                                            </div>
+                                                            <div class="clapat-slide">
+                                                                <div class="slider-fixed-img-container">
+                                                                    <img src="/assets/images/collections/celeb/prarthana/8.jpeg"
+                                                                        alt="Slider Image 2">
+                                                                </div>
+                                                            </div>
+                                                            <div class="clapat-slide">
+                                                                <div class="slider-fixed-img-container">
+                                                                    <img src="/assets/images/collections/celeb/prarthana/9.jpeg"
+                                                                        alt="Slider Image 3">
+                                                                </div>
+                                                            </div>
+                                                            <div class="clapat-slide">
+                                                                <div class="slider-fixed-img-container">
+                                                                    <img src="/assets/images/collections/celeb/prarthana/10.jpeg"
+                                                                        alt="Slider Image 4">
+                                                                </div>
+                                                            </div>
+                                                            <div class="clapat-slide">
+                                                                <div class="slider-fixed-img-container">
+                                                                    <img src="/assets/images/collections/celeb/prarthana/11.jpeg"
+                                                                        alt="Slider Image 5">
+                                                                </div>
+                                                            </div>
+                                                         
+                                                          
+                                                        </div>
+                                                    </div>
+                                                    <!-- Removed slider controls and pagination -->
+                                                </div>
+                                                <hr class="destroy">
+                                                <hr class="destroy">
+                                                <hr>
+                                            </div>
+                                            <!-- Modal for image preview -->
+                                            <div class="img-modal" id="imgModal">
+                                                <div class="img-modal-content">
+                                                    <button class="img-modal-close" id="imgModalClose"
+                                                        aria-label="Close">&times;</button>
+                                                    <img src="" alt="Full Preview" id="imgModalImg">
+                                                </div>
+                                            </div>
+
+
+
+                                             <!--------------------------------------------------------------------->
+
+                                             <div class="content-row full dark-section" data-bgcolor="#D6D6CE">
+                                                <!-- Slider Title -->
+                                                <div class="slider-title" style="font-family: 'Impact', sans-serif !important; display: flex; justify-content: space-between; align-items: center; padding-left: 30px; padding-right: 30px; color: #333; font-size: 24px; font-weight: bold; letter-spacing: -12px; flex-wrap: wrap; gap: 10px;">
+                                                    <div class="title-left">PRARTHANA INDRAJITH</div>
+                                                    <div class="title-center"><span style="font-size: 14px; margin-right: 20px;">03</span> 2024</div>
+                                                    <div class="title-right">FRENCH EVENING</div>
+                                                </div>
+                                                
+                                                <div
+                                                    class="clapat-slider-wrapper content-slider small-looped-carousel has-animation autocenter light-cursor">
+                                                    <div class="clapat-slider">
+                                                        <div class="clapat-slider-viewport">
+                                                            <div class="clapat-slide">
+                                                                <div class="slider-fixed-img-container">
+                                                                    <img src="/assets/images/collections/celeb/prarthana/12.jpeg"
+                                                                        alt="Slider Image 1">
+                                                                </div>
+                                                            </div>
+                                                            <div class="clapat-slide">
+                                                                <div class="slider-fixed-img-container">
+                                                                    <img src="/assets/images/collections/celeb/prarthana/13.jpeg"
+                                                                        alt="Slider Image 2">
+                                                                </div>
+                                                            </div>
+                                                            <div class="clapat-slide">
+                                                                <div class="slider-fixed-img-container">
+                                                                    <img src="/assets/images/collections/celeb/prarthana/14.jpeg"
+                                                                        alt="Slider Image 3">
+                                                                </div>
+                                                            </div>
+                                                            <div class="clapat-slide">
+                                                                <div class="slider-fixed-img-container">
+                                                                    <img src="/assets/images/collections/celeb/prarthana/15.jpeg"
+                                                                        alt="Slider Image 4">
+                                                                </div>
+                                                            </div>
+                                                            <div class="clapat-slide">
+                                                                <div class="slider-fixed-img-container">
+                                                                    <img src="/assets/images/collections/celeb/prarthana/16.jpeg"
+                                                                        alt="Slider Image 5">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="clapat-slide">
+                                                                <div class="slider-fixed-img-container">
+                                                                    <img src="/assets/images/collections/celeb/prarthana/17.jpeg"
+                                                                        alt="Slider Image 5">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="clapat-slide">
+                                                                <div class="slider-fixed-img-container">
+                                                                    <img src="/assets/images/collections/celeb/prarthana/18.jpeg"
+                                                                        alt="Slider Image 5">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="clapat-slide">
+                                                                <div class="slider-fixed-img-container">
+                                                                    <img src="/assets/images/collections/celeb/prarthana/19.jpeg"
+                                                                        alt="Slider Image 5">
+                                                                </div>
+                                                            </div>
+
+                                                          
+
+                                                         
+                                                          
+                                                        </div>
+                                                    </div>
+                                                    <!-- Removed slider controls and pagination -->
+                                                </div>
+                                                <hr class="destroy">
+                                                <hr class="destroy">
+                                                <hr>
+                                            </div>
+                                            <!-- Modal for image preview -->
+                                            <div class="img-modal" id="imgModal">
+                                                <div class="img-modal-content">
+                                                    <button class="img-modal-close" id="imgModalClose"
+                                                        aria-label="Close">&times;</button>
+                                                    <img src="" alt="Full Preview" id="imgModalImg">
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        
+                                            <!----------------- GOPIKA RAMESH ---------------------------->
+                                            <div>
+                                                <div class="content-row full dark-section" data-bgcolor="#D6D6CE">
+                                                    <!-- Slider Title -->
+                                                    <div class="slider-title" style="font-family: 'Impact', sans-serif !important; display: flex; justify-content: space-between; align-items: center; padding-left: 30px; padding-right: 30px; color: #333; font-size: 24px; font-weight: bold; letter-spacing: -12px; flex-wrap: wrap; gap: 10px;">
+                                                        <div class="title-left">GOPIKA RAMESH</div>
+                                                        <div class="title-center"><span style="font-size: 14px; margin-right: 20px;">04</span> 2024</div>
+                                                        <div class="title-right">JAB SAYYA</div>
+                                                    </div>
+                                                    
+                                                    <div
+                                                        class="clapat-slider-wrapper content-slider small-looped-carousel has-animation autocenter light-cursor">
+                                                        <div class="clapat-slider">
+                                                            <div class="clapat-slider-viewport">
+                                                                <div class="clapat-slide">
+                                                                    <div class="slider-fixed-img-container">
+                                                                        <img src="/assets/images/collections/celeb/gopika/1.jpeg"
+                                                                            alt="Slider Image 1">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="clapat-slide">
+                                                                    <div class="slider-fixed-img-container">
+                                                                        <img src="/assets/images/collections/celeb/gopika/2.jpeg"
+                                                                            alt="Slider Image 2">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="clapat-slide">
+                                                                    <div class="slider-fixed-img-container">
+                                                                        <img src="/assets/images/collections/celeb/gopika/3.jpeg"
+                                                                            alt="Slider Image 3">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="clapat-slide">
+                                                                    <div class="slider-fixed-img-container">
+                                                                        <img src="/assets/images/collections/celeb/gopika/4.jpeg"
+                                                                            alt="Slider Image 4">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="clapat-slide">
+                                                                    <div class="slider-fixed-img-container">
+                                                                        <img src="/assets/images/collections/celeb/gopika/5.jpeg"
+                                                                            alt="Slider Image 5">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="clapat-slide">
+                                                                    <div class="slider-fixed-img-container">
+                                                                        <img src="/assets/images/collections/celeb/gopika/6.jpeg"
+                                                                            alt="Slider Image 6">
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="clapat-slide">
+                                                                    <div class="slider-fixed-img-container">
+                                                                        <img src="/assets/images/collections/celeb/gopika/7.jpeg"
+                                                                            alt="Slider Image 7">
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="clapat-slide">
+                                                                    <div class="slider-fixed-img-container">
+                                                                        <img src="/assets/images/collections/celeb/gopika/8.jpeg"
+                                                                            alt="Slider Image 8">
+                                                                    </div>
+                                                                </div>
+    
+                                                                <div class="clapat-slide">
+                                                                    <div class="slider-fixed-img-container">
+                                                                        <img src="/assets/images/collections/celeb/gopika/9.jpeg"
+                                                                            alt="Slider Image 9">
+                                                                    </div>
+                                                                </div>
+    
+    
+                                                            </div>
+                                                        </div>
+                                                        <!-- Removed slider controls and pagination -->
+                                                    </div>
+                                                    <hr class="destroy">
+                                                    <hr class="destroy">
+                                                    <hr>
+                                                </div>
+                                                <!-- Modal for image preview -->
+                                                <div class="img-modal" id="imgModal">
+                                                    <div class="img-modal-content">
+                                                        <button class="img-modal-close" id="imgModalClose"
+                                                            aria-label="Close">&times;</button>
+                                                        <img src="" alt="Full Preview" id="imgModalImg">
+                                                    </div>
+                                                </div>
+    
+    
+    
+                                                <!--------------------------------------------------------------------->
+    
+                                                <div class="content-row full dark-section" data-bgcolor="#D6D6CE">
+                                                    <!-- Slider Title -->
+                                                    <div class="slider-title" style="font-family: 'Impact', sans-serif !important; display: flex; justify-content: space-between; align-items: center; padding-left: 30px; padding-right: 30px; color: #333; font-size: 24px; font-weight: bold; letter-spacing: -12px; flex-wrap: wrap; gap: 10px;">
+                                                        <div class="title-left">POORNIMA INDRAJITH </div>
+                                                        <div class="title-center"><span style="font-size: 14px; margin-right: 20px;">05</span> 2024</div>
+                                                        <div class="title-right">BRAND SHOOT</div>
+                                                    </div>
+                                                    
+                                                    <div
+                                                        class="clapat-slider-wrapper content-slider small-looped-carousel has-animation autocenter light-cursor">
+                                                        <div class="clapat-slider">
+                                                            <div class="clapat-slider-viewport">
+                                                                <div class="clapat-slide">
+                                                                    <div class="slider-fixed-img-container">
+                                                                        <img src="/assets/images/collections/celeb/poornima/1.jpeg"
+                                                                            alt="Slider Image 1">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="clapat-slide">
+                                                                    <div class="slider-fixed-img-container">
+                                                                        <img src="/assets/images/collections/celeb/poornima/2.jpeg"
+                                                                            alt="Slider Image 2">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="clapat-slide">
+                                                                    <div class="slider-fixed-img-container">
+                                                                        <img src="/assets/images/collections/celeb/poornima/3.jpeg"
+                                                                            alt="Slider Image 3">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="clapat-slide">
+                                                                    <div class="slider-fixed-img-container">
+                                                                        <img src="/assets/images/collections/celeb/poornima/4.jpeg"
+                                                                            alt="Slider Image 4">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="clapat-slide">
+                                                                    <div class="slider-fixed-img-container">
+                                                                        <img src="/assets/images/collections/celeb/poornima/5.jpeg"
+                                                                            alt="Slider Image 5">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="clapat-slide">
+                                                                    <div class="slider-fixed-img-container">
+                                                                        <img src="/assets/images/collections/celeb/poornima/6.jpeg"
+                                                                            alt="Slider Image 6">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="clapat-slide">
+                                                                    <div class="slider-fixed-img-container">
+                                                                        <img src="/assets/images/collections/celeb/poornima/7.jpeg"
+                                                                            alt="Slider Image 7">
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="clapat-slide">
+                                                                    <div class="slider-fixed-img-container">
+                                                                        <img src="/assets/images/collections/celeb/poornima/8.jpeg"
+                                                                            alt="Slider Image 8">
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="clapat-slide">
+                                                                    <div class="slider-fixed-img-container">
+                                                                        <img src="/assets/images/collections/celeb/poornima/9.jpeg"
+                                                                            alt="Slider Image 9">
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="clapat-slide">
+                                                                    <div class="slider-fixed-img-container">
+                                                                        <img src="/assets/images/collections/celeb/poornima/10.jpeg"
+                                                                            alt="Slider Image 10">
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="clapat-slide">
+                                                                    <div class="slider-fixed-img-container">
+                                                                        <img src="/assets/images/collections/celeb/poornima/11.jpeg"
+                                                                            alt="Slider Image 11">
+                                                                    </div>
+                                                                </div>
+                                                             
+                                                              
+                                                            </div>
+                                                        </div>
+                                                        <!-- Removed slider controls and pagination -->
+                                                    </div>
+                                                    <hr class="destroy">
+                                                    <hr class="destroy">
+                                                    <hr>
+                                                </div>
+                                                <!-- Modal for image preview -->
+                                                <div class="img-modal" id="imgModal">
+                                                    <div class="img-modal-content">
+                                                        <button class="img-modal-close" id="imgModalClose"
+                                                            aria-label="Close">&times;</button>
+                                                        <img src="" alt="Full Preview" id="imgModalImg">
+                                                    </div>
+                                                </div>
+    
+    
+    
+                                                 <!--------------------------------------------------------------------->
+    
+                                                 <div class="content-row full dark-section" data-bgcolor="#D6D6CE">
+                                                    <!-- Slider Title -->
+                                                    <div class="slider-title" style="font-family: 'Impact', sans-serif !important; display: flex; justify-content: space-between; align-items: center; padding-left: 30px; padding-right: 30px; color: #333; font-size: 24px; font-weight: bold; letter-spacing: -12px; flex-wrap: wrap; gap: 10px;">
+                                                        <div class="title-left">NOORIN SHEREEF</div>
+                                                        <div class="title-center"><span style="font-size: 14px; margin-right: 20px;">06</span> 2024</div>
+                                                        <div class="title-right">COFFEE</div>
+                                                    </div>
+                                                    
+                                                    <div
+                                                        class="clapat-slider-wrapper content-slider small-looped-carousel has-animation autocenter light-cursor">
+                                                        <div class="clapat-slider">
+                                                            <div class="clapat-slider-viewport">
+                                                                <div class="clapat-slide">
+                                                                    <div class="slider-fixed-img-container">
+                                                                        <img src="/assets/images/collections/celeb/noorin/1.jpeg"
+                                                                            alt="Slider Image 1">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="clapat-slide">
+                                                                    <div class="slider-fixed-img-container">
+                                                                        <img src="/assets/images/collections/celeb/noorin/2.jpeg"
+                                                                            alt="Slider Image 2">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="clapat-slide">
+                                                                    <div class="slider-fixed-img-container">
+                                                                        <img src="/assets/images/collections/celeb/noorin/3.jpeg"
+                                                                            alt="Slider Image 3">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="clapat-slide">
+                                                                    <div class="slider-fixed-img-container">
+                                                                        <img src="/assets/images/collections/celeb/noorin/4.jpeg"
+                                                                            alt="Slider Image 4">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="clapat-slide">
+                                                                    <div class="slider-fixed-img-container">
+                                                                        <img src="/assets/images/collections/celeb/noorin/5.jpeg"
+                                                                            alt="Slider Image 5">
+                                                                    </div>
+                                                                </div>
+    
+                                                                <div class="clapat-slide">
+                                                                    <div class="slider-fixed-img-container">
+                                                                        <img src="/assets/images/collections/celeb/noorin/6.jpeg"
+                                                                            alt="Slider Image 5">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Removed slider controls and pagination -->
+                                                    </div>
+                                                    <hr class="destroy">
+                                                    <hr class="destroy">
+                                                    <hr>
+                                                </div>
+                                                <!-- Modal for image preview -->
+                                                <div class="img-modal" id="imgModal">
+                                                    <div class="img-modal-content">
+                                                        <button class="img-modal-close" id="imgModalClose"
+                                                            aria-label="Close">&times;</button>
+                                                        <img src="" alt="Full Preview" id="imgModalImg">
+                                                    </div>
+                                                </div>
+
+
+                                                     <!--------------------------------------------------------------------->
+    
+                                                     <div class="content-row full dark-section" data-bgcolor="#D6D6CE">
+                                                        <!-- Slider Title -->
+                                                        <div class="slider-title" style="font-family: 'Impact', sans-serif !important; display: flex; justify-content: space-between; align-items: center; padding-left: 30px; padding-right: 30px; color: #333; font-size: 24px; font-weight: bold; letter-spacing: -12px; flex-wrap: wrap; gap: 10px;">
+                                                            <div class="title-left">NOORIN SHEREEF</div>
+                                                            <div class="title-center"><span style="font-size: 14px; margin-right: 20px;">07</span> 2024</div>
+                                                            <div class="title-right">PAINT THE SKY</div>
+                                                        </div>
+                                                        
+                                                        <div
+                                                            class="clapat-slider-wrapper content-slider small-looped-carousel has-animation autocenter light-cursor">
+                                                            <div class="clapat-slider">
+                                                                <div class="clapat-slider-viewport">
+                                                                    <div class="clapat-slide">
+                                                                        <div class="slider-fixed-img-container">
+                                                                            <img src="/assets/images/collections/celeb/noorin/7.jpeg"
+                                                                                alt="Slider Image 1">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="clapat-slide">
+                                                                        <div class="slider-fixed-img-container">
+                                                                            <img src="/assets/images/collections/celeb/noorin/8.jpeg"
+                                                                                alt="Slider Image 2">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="clapat-slide">
+                                                                        <div class="slider-fixed-img-container">
+                                                                            <img src="/assets/images/collections/celeb/noorin/9.jpeg"
+                                                                                alt="Slider Image 3">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="clapat-slide">
+                                                                        <div class="slider-fixed-img-container">
+                                                                            <img src="/assets/images/collections/celeb/noorin/10.jpeg"
+                                                                                alt="Slider Image 4">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="clapat-slide">
+                                                                        <div class="slider-fixed-img-container">
+                                                                            <img src="/assets/images/collections/celeb/noorin/11.jpeg"
+                                                                                alt="Slider Image 5">
+                                                                        </div>
+                                                                    </div>
+        
+                                                                    <div class="clapat-slide">
+                                                                        <div class="slider-fixed-img-container">
+                                                                            <img src="/assets/images/collections/celeb/noorin/12.jpeg"
+                                                                                alt="Slider Image 5">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Removed slider controls and pagination -->
+                                                        </div>
+                                                        <hr class="destroy">
+                                                        <hr class="destroy">
+                                                        <hr>
+                                                    </div>
+                                                    <!-- Modal for image preview -->
+                                                    <div class="img-modal" id="imgModal">
+                                                        <div class="img-modal-content">
+                                                            <button class="img-modal-close" id="imgModalClose"
+                                                                aria-label="Close">&times;</button>
+                                                            <img src="" alt="Full Preview" id="imgModalImg">
+                                                        </div>
+                                                    </div>
+                                            </div>
+
+                                         
+                                            <!-- <div class="snap-slide trigger-item change-header-color">
+                                                <div class="img-mask">
+                                                    <div class="section-image trigger-item-link">
+                                                        <img src="/assets/images/collections/ad/bg.png"
+                                                            class="item-image grid__item-img" alt="">
+                                                    </div>
+                                                    <img src="/assets/images/collections/ad/bg.png"
+                                                        class="grid__item-img grid__item-img--large" alt="">
+                                                </div>
+                                            </div>
+
+                                            <div class="snap-slide trigger-item change-header-color">
+                                                <div class="img-mask">
+                                                    <div class="section-image trigger-item-link">
+                                                        <img src="img/wedding/bg.png" class="item-image grid__item-img"
+                                                            alt="">
+                                                    </div>
+                                                    <img src="img/wedding/bg.png"
+                                                        class="grid__item-img grid__item-img--large" alt="">
+                                                </div>
+                                            </div>
+
+                                            <div class="snap-slide trigger-item change-header-color">
+                                                <div class="img-mask">
+                                                    <div class="section-image trigger-item-link">
+                                                        <img src="img/others/bg.png" class="item-image grid__item-img"
+                                                            alt="">
+                                                    </div>
+                                                    <img src="img/others/bg.png"
+                                                        class="grid__item-img grid__item-img--large" alt="">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="snap-slide trigger-item change-header-color">
+                                                <div class="img-mask">
+                                                    <div class="section-image trigger-item-link">
+                                                        <img src="/core-images/videobg.png"
+                                                            class="item-image grid__item-img" alt="">
+                                                    </div>
+                                                    <img src="/core-images/videobg.png"
+                                                        class="grid__item-img grid__item-img--large" alt="">
+                                                </div>
+                                            </div> -->
+
+                                        </div>
+                                    </div>
+
+
+
+                                     <!-- Row -->
+                                     <div class="content-row full text-align-center dark-section disable-header-gradient"
+                                     data-bgcolor="#c8c8c8">
+
+                                     <div class="snap-slider-holder">
+
+                                         <div class="snap-slider-images">
+                                             <div class="snap-slider-images-wrapper">
+
+                                                <div class="snap-slide trigger-item change-header-color">
+                                                    <div class="img-mask">
+                                                        <div class="section-image trigger-item-link">
+                                                            <img src="/assets/images/collections/ad/bg.png"
+                                                                class="item-image grid__item-img" alt="">
+                                                        </div>
+                                                        <img src="/assets/images/collections/ad/bg.png"
+                                                            class="grid__item-img grid__item-img--large" alt="">
+                                                    </div>
+                                                </div>
+
+                                                <div class="snap-slide trigger-item change-header-color">
+                                                    <div class="img-mask">
+                                                        <div class="section-image trigger-item-link">
+                                                            <img src="/assets/images/collections/ad/bg.png"
+                                                                class="item-image grid__item-img" alt="">
+                                                        </div>
+                                                        <img src="/assets/images/collections/ad/bg.png"
+                                                            class="grid__item-img grid__item-img--large" alt="">
+                                                    </div>
+                                                </div>
+
+                                                 <div class="snap-slide trigger-item change-header-color">
+                                                     <div class="img-mask">
+                                                         <div class="section-image trigger-item-link">
+                                                             <img src="/assets/images/collections/wedding/bg.png"
+                                                                 class="item-image grid__item-img" alt="">
+                                                         </div>
+                                                         <img src="/assets/images/collections/wedding/bg.png"
+                                                             class="grid__item-img grid__item-img--large" alt="">
+                                                     </div>
+                                                 </div>
+
+                                                 <div class="snap-slide trigger-item change-header-color">
+                                                     <div class="img-mask">
+                                                         <div class="section-image trigger-item-link">
+                                                             <img src="/assets/images/collections/others/bg.png"
+                                                                 class="item-image grid__item-img" alt="">
+                                                         </div>
+                                                         <img src="/assets/images/collections/others/bg.png"
+                                                             class="grid__item-img grid__item-img--large" alt="">
+                                                     </div>
+                                                 </div>
+
+                                                 <div class="snap-slide trigger-item change-header-color">
+                                                     <div class="img-mask">
+                                                         <div class="section-image trigger-item-link">
+                                                             <img src="/assets/images/collections/video/videobg.png"
+                                                                 class="item-image grid__item-img" alt="">
+                                                         </div>
+                                                         <img src="/assets/images/collections/video/videobg.png"
+                                                             class="grid__item-img grid__item-img--large" alt="">
+                                                     </div>
+                                                 </div>
+
+
+                                                 
+
+                                             </div>
+                                         </div>
+
+
+                                   <div class="snap-slider-thumbs">
+                                                    <div class="snap-slider-thumbs-wrapper">
+
+                                                        <div class="thumb-slide" data-centerLine="OPEN">
+                                                            <div class="thumb-slide-img">
+                                                                <img src="/assets/images/home/btn1.png"
+                                                                    class="item-image grid__item-img" alt="">
+                                                            </div>
+                                                            <a class="slide-link" data-type="page-transition"
+                                                                href="/actor.html"></a>
+                                                        </div>
+
+                                                        <div class="thumb-slide" data-centerLine="OPEN">
+                                                            <div class="thumb-slide-img">
+                                                                <img src="/assets/images/home/btn2.png"
+                                                                    class="item-image grid__item-img" alt="">
+                                                            </div>
+                                                            <a class="slide-link" data-type="page-transition"
+                                                                href="/advertising.html"></a>
+                                                        </div>
+
+                                                        <div class="thumb-slide" data-centerLine="OPEN">
+                                                            <div class="thumb-slide-img">
+                                                                <img src="/assets/images/home/btn3.png"
+                                                                    class="item-image grid__item-img" alt="">
+                                                            </div>
+                                                             <a class="slide-link" data-type="page-transition"
+                                                                href="/moments.html"></a>
+                                                        </div>
+
+                                                        <div class="thumb-slide" data-centerLine="OPEN">
+                                                            <div class="thumb-slide-img">
+                                                                <img src="/assets/images/home/btn4.png"
+                                                                    class="item-image grid__item-img" alt="">
+                                                            </div>
+                                                            <a class="slide-link" data-type="page-transition"
+                                                                href="/other.html"></a>
+                                                        </div>
+
+                                                          <div class="thumb-slide" data-centerLine="OPEN">
+                                                            <div class="thumb-slide-img">
+                                                                <img src="/assets/images/home/btn1.png"
+                                                                    class="item-image grid__item-img" alt="">
+                                                            </div>
+                                                            <a class="slide-link" data-type="page-transition"
+                                                                href="/videos.html"></a>
+                                                        </div>
+
+                                                    </div>
+                                                </div> 
+
+
+                                     <div class="snap-slider-captions">
+                                                    <div class="snap-slider-captions-wrapper content-full-width">
+
+                                                        <div class="snap-slide-caption">
+                                                            <div class="slide-title"><span>Actress Collections</span></div>
+                                                            <div class="slide-current"><span>01</span></div>
+                                                            <div class="slide-counter"><span>04</span></div>
+                                                            <div class="slide-subtitle"><span>Azmi Creations</span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="snap-slide-caption">
+                                                            <div class="slide-title"><span>Advertising Collections</span></div>
+                                                            <div class="slide-current"><span>02</span></div>
+                                                            <div class="slide-counter"><span>04</span></div>
+                                                            <div class="slide-subtitle"><span>Azmi Creations</span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="snap-slide-caption change-header1"
+                                                            data-centerLine="OPEN">
+                                                            <div class="slide-title"><span>Wedding Creations</span></div>
+                                                            <div class="slide-current"><span>03</span></div>
+                                                            <div class="slide-counter"><span>04</span></div>
+                                                            <div class="slide-subtitle"><span>Azmi Photography</span></div>
+                                                        </div>
+
+                                                        <div class="snap-slide-caption">
+                                                            <div class="slide-title"><span>Other Collections</span></div>
+                                                            <div class="slide-current"><span>04</span></div>
+                                                            <div class="slide-counter"><span>04</span></div>
+                                                            <div class="slide-subtitle"><span>Azmi Photography</span></div>
+                                                        </div>
+
+
+                                                          <div class="snap-slide-caption">
+                                                            <div class="slide-title"><span>Video Collections</span></div>
+                                                            <div class="slide-current"><span>04</span></div>
+                                                            <div class="slide-counter"><span>04</span></div>
+                                                            <div class="slide-subtitle"><span>Azmi Videography</span></div>
+                                                        </div>
+
+                                                    </div>
+                                                </div> 
+
+                                      
+
+                                     </div>  
+
+                                 </div>
+                                 <!--/Row -->
+
+
+                                 <!-- Row -->
+                                
+                                 <!--/Row -->
+
+                                  
+
+                                </div>
+
+                            </div>
+                            <!--/Row -->
+
+
+                            <!-- Row -->
+                            <div class="content-row small text-align-center light-section" data-bgcolor="#c8c8c8">
+
+                                <hr>
+                                <hr>
+                                <hr>
+
+                                <p class="has-shuffle no-margins">Continue exploring our work collection</p>
+
+                                <br>
+
+                                <div class="button-box">
+                                    <div class="clapat-button-wrap parallax-wrap hide-ball">
+                                        <div class="clapat-button parallax-element">
+                                            <div class="button-border outline rounded parallax-element-second">
+                                                <a class="ajax-link" data-type="page-transition" href="#!">
+                                                    <span data-hover="All Projects">All Projects</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <!--/Row -->
+
+
+                            <!-- Row -->
+                            <div class="content-row row_padding_top text-align-center light-section"
+                                data-bgcolor="#c8c8c8">
+
+                                <div class="pinned-lists-wrapper font-mode" data-duration="3x">
+                                    <p>You need it? We do it</p>
+                                    <ul class="pinned-lists">
+                                        <li>branding</li>
+                                        <li data-infoTextAfter="Inspire">web design</li>
+                                        <li>motion</li>
+                                        <li data-infoTextAfter="Create">development</li>
+                                        <li>marketing</li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                            <!--/Row -->
+
+
+                            <!-- Row -->
+                            <div class="content-row row_padding_top light-section text-align-center"
+                                data-bgcolor="#c8c8c8">
+
+
+                                <div class="one_third has-animation" data-delay="100">
+
+                                    <div class="box-icon-wrapper block-boxes">
+                                        <div class="box-icon">
+                                            <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="box-icon-content">
+                                            <h6 class="no-margins">kochi , Bangalore </h6>
+                                            <p>Address</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="one_third has-animation" data-delay="200">
+
+                                    <hr>
+                                    <p class="bigger">. . .</p>
+
+                                </div>
+
+                                <div class=" one_third last has-animation" data-delay="300">
+
+                                    <div class="box-icon-wrapper block-boxes">
+                                        <div class="box-icon">
+                                            <i class="fa fa-phone fa-2x" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="box-icon-content">
+                                            <h6 class="no-margins">+91 88912 62418</h6>
+                                            <p>Phone</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <!--/Row -->
+
+
+                            <!-- Row -->
+                            <div class="content-row full row_padding_top light-section text-align-center"
+                                style="margin-bottom: 20px;" data-bgcolor="#c8c8c8">
+
+                                <p class="bigger has-shuffle no-margins secondary-font">Ready to work
+                                    together?</p>
+                                <div id="copy-email" data-hover-message="Copy Mail" data-clicked-message="Copied">
+                                    <span style="font-size: 34px;"
+                                        class="email-text">tanviazmiphotoghraphy@gmail.com</span>
+                                </div>
+                                
+                                <br><br><br><br>
+
+                            </div>
+                            <!--/Row -->
+
+
+                        </div>
+                    </div>
+                    <!-- Fit Thumb Screen Effects -->
+                </div>
+                <!--/Main Page Content -->
+
+
+                <!-- Page Navigation -->
+                <div id="page-nav" class="move-nav-onload">
+                    <div class="page-nav-wrap">
+                        <div class="page-nav-caption nav-full-caption content-full-width text-align-center">
+                            <div class="inner">
+                                <a class="next-ajax-link-page" data-type="page-transition" data-centerline="GO TO"
+                                    href="/about.html">
+                                    <div class="next-hero-title caption-timeline" data-infoTextBefore="Go Ahead"
+                                        data-infoTextAfter="Next Page">
+                                        <span>Nazmi</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/Page Navigation -->
+
+
+            </div>
+            <!--/Main Content -->
+
+        </div>
+        <!--/Main -->
+
+
+
+
+        <!-- Footer -->
+        <footer class="clapat-footer hidden">
+            <div id="footer-container">
+
+                <div id="backtotop" class="button-wrap left">
+                    <div class="icon-wrap parallax-wrap">
+                        <div class="button-icon parallax-element">
+                            <i class="fa-solid fa-angle-up"></i>
+                        </div>
+                    </div>
+                    <div class="button-text sticky left"><span data-hover="Back Top">Back Top</span></div>
+                </div>
+
+                <div class="footer-middle">
+                    <div class="copyright">2025 © <a class="link" target="_blank" href="#!">VectorCrop</a>.
+                        All
+                        rights reserved.</div>
+                </div>
+
+                <div class="socials-wrap">
+                    <div class="socials-icon"><i class="fa-solid fa-share-nodes"></i></div>
+                    <div class="socials-text">Follow Us</div>
+                    <ul class="socials">
+                        <li><span class="parallax-wrap"><a class="parallax-element" href="#!"
+                                    target="_blank">Db</a></span>
+                        </li>
+                        <li><span class="parallax-wrap"><a class="parallax-element" href="#!"
+                                    target="_blank">Tx</a></span></li>
+                        <li><span class="parallax-wrap"><a class="parallax-element" href="#!"
+                                    target="_blank">Be</a></span></li>
+                        <li><span class="parallax-wrap"><a class="parallax-element" href="#!"
+                                    target="_blank">Fb</a></span>
+                        </li>
+                        <li><span class="parallax-wrap"><a class="parallax-element" href="#!">In</a></span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </footer>
+        <!--/Footer -->
+
+        </div>
+        <!--/Content Scroll -->
+
+
+        <div id="app"></div>
+
+
+        </div>
+        <!--/Page Content -->
+
+        </div>
+    </main>
+
+
+
+
+    <div class="cd-cover-layer"></div>
+    <div id="magic-cursor">
+        <div id="ball">
+            <div id="ball-drag-x"></div>
+            <div id="ball-drag-y"></div>
+            <div id="ball-loader"></div>
+        </div>
+    </div>
+    <div id="clone-image">
+        <div class="hero-translate"></div>
+    </div>
+    <div id="rotate-device"></div>
+
+
+    <script>
+        // Modal logic for image preview
+        document.addEventListener('DOMContentLoaded', function () {
+            const modal = document.getElementById('imgModal');
+            const modalImg = document.getElementById('imgModalImg');
+            const closeBtn = document.getElementById('imgModalClose');
+            // Attach click event to all slider images
+            document.querySelectorAll('.slider-fixed-img-container img').forEach(function (img) {
+                img.addEventListener('click', function () {
+                    modalImg.src = this.src;
+                    modal.classList.add('active');
+                });
+            });
+            // Close modal on close button
+            closeBtn.addEventListener('click', function () {
+                modal.classList.remove('active');
+                modalImg.src = '';
+            });
+            // Close modal on outside click
+            modal.addEventListener('click', function (e) {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    modalImg.src = '';
+                }
+            });
+            // Optional: close modal on ESC key
+            document.addEventListener('keydown', function (e) {
+                if (e.key === "Escape" && modal.classList.contains('active')) {
+                    modal.classList.remove('active');
+                    modalImg.src = '';
+                }
+            });
+        });
+    </script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="assets/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="assets/libs/gsap/3.11.4/Flip.min.js"></script>
+    <script src='assets/libs/three.js/r128/three.min.js'></script>
+    <script src='assets/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js'></script>
+    <script src='assets/libs/smooth-scrollbar/8.4.0/smooth-scrollbar.js'></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpK1sWi3J3EbUOkF_K4-UHzi285HyFX5M&amp;sensor=false"></script>
+
+    <script src="assets/js/clapat.js"></script>
+    <script src="assets/js/plugins.js"></script>
+
+    <script src="assets/js/common.js"></script>
+    <script src="assets/js/contact.js"></script>
+    <script src="assets/js/scripts.js"></script>
+
+
+
+
+</body>
+
+
+</html>
